@@ -30,9 +30,12 @@ Then ask your assistant to publish a site. It will return the public URL.
 ## About this repository
 
 This is a **metadata-only** repository. It holds the published `server.json`,
-brand icons, and this README for the MCP Registry listing. The Just Publish
-server itself is hosted at `https://mcp.justpublish.ai/` — its source is not
-part of this repo.
+the `.mcp.json` plugin manifest, brand icons, and this README for the MCP
+Registry listing. The Just Publish server itself is hosted at
+`https://mcp.justpublish.ai/` — its source is not part of this repo.
+
+The root `.mcp.json` declares the remote server in the Open Plugins format so
+plugin directories can detect it.
 
 ## Links
 
