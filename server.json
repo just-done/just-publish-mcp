@@ -1,0 +1,34 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "ai.justpublish/just-publish",
+  "title": "Just Publish",
+  "description": "Publish a static website to a live public URL straight from chat.",
+  "websiteUrl": "https://justpublish.ai",
+  "version": "0.1.2",
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/just-done/just-publish-mcp/main/icon-512.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "512x512"
+      ]
+    },
+    {
+      "src": "https://raw.githubusercontent.com/just-done/just-publish-mcp/main/icon-192.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "192x192"
+      ]
+    }
+  ],
+  "repository": {
+    "url": "https://github.com/just-done/just-publish-mcp",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.justpublish.ai/"
+    }
+  ]
+}
