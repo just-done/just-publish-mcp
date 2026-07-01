@@ -4,7 +4,7 @@
 
 Describe a site to your AI assistant — ChatGPT, Claude, Gemini, or any
 MCP-enabled client — and it publishes the site and hands back a live URL. No git,
-no CLI, no build.
+no CLI.
 
 - **Website:** https://justpublish.ai
 - **MCP endpoint:** `https://mcp.justpublish.ai/`
