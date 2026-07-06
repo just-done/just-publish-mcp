@@ -66,8 +66,8 @@ in one step. If you can describe a page, you can publish it.
 - **No accounts required.** Edit access is held by the `edit_token` returned at
   publish time — save it to update the site later.
 - **Static sites only** — files in, URL out. No frameworks or build pipelines.
-- Free to start; a **Builder** plan and **custom-domain** connection are available
-  at [justpublish.ai](https://justpublish.ai).
+- **Connect your own domain** — publish to a shareable URL, then attach a custom
+  domain when you're ready at [justpublish.ai](https://justpublish.ai).
 
 ## About this repository
 
