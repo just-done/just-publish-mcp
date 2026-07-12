@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Just">
+  <!--
+    ChatGPT app-icon cut (LIGHT) — derived from the Figma-verified canonical
+    just-logo-icon.svg (node 3:6). Geometry byte-identical; only a full-bleed
+    square paper background added (ChatGPT forbids rounded corners — clients
+    apply circular cropping). bg = just-paper token #F5F3EE.
+  -->
+  <defs>
+    <radialGradient id="jdot" cx="36%" cy="32%" r="72%">
+      <stop offset="0%"  stop-color="#FFFFFF"/>
+      <stop offset="42%" stop-color="#FAF8F3"/>
+      <stop offset="100%" stop-color="#F3DDD1"/>
+    </radialGradient>
+  </defs>
+  <rect width="512" height="512" fill="#F5F3EE"/>
+  <path fill="#1D1F23" d="
+    M236 104
+    h64
+    v176
+    a96 96 0 0 1 -96 96
+    a96 96 0 0 1 -96 -96
+    v-8
+    h64
+    v8
+    a32 32 0 0 0 32 32
+    a32 32 0 0 0 32 -32
+    z"/>
+  <circle cx="356" cy="352" r="36" fill="url(#jdot)"/>
+  <circle cx="356" cy="352" r="36" fill="none" stroke="#000000" stroke-opacity="0.04" stroke-width="1"/>
+</svg>

@@ -1,0 +1,20 @@
+interface:
+  display_name: "Just Publish"
+  short_description: "Publish the website you built with AI to a live public URL — straight from the chat, no setup."
+  icon_small: "./assets/icon.svg"
+  icon_large: "./assets/icon-512.png"
+  brand_color: "#D97757"
+  default_prompt: "Publish this website with Just Publish and give me the live link."
+
+policy:
+  allow_implicit_invocation: true
+
+# One entry per MCP SERVER (the connector Codex installs and wires), not per
+# tool — the server exposes deploy, update_site_file, and get_site_files.
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "just-publish"
+      description: "Just Publish MCP server — publish a static site to a live public URL, and read or edit its files."
+      transport: "streamable_http"
+      url: "https://mcp.justpublish.ai/"

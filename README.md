@@ -56,6 +56,27 @@ Static markdown guidance the client can load into context before it picks a tool
 
 Plus a UI resource for the publish-result widget.
 
+## Agent Skill (ChatGPT / Codex / any SKILL.md runtime)
+
+This repo also hosts the **`just-publish` Agent Skill** — a [SKILL.md-format](https://learn.chatgpt.com/docs/build-skills)
+package that teaches an agent the full publish flow (including saving the
+`edit_token` and the email-verification step) before it ever calls a tool.
+
+Install into Codex / ChatGPT with the skill installer, pointing at this tree:
+
+```
+$skill-installer install https://github.com/just-done/just-publish-mcp/tree/main/skills/just-publish
+```
+
+Or copy `skills/just-publish/` into your agent's skills directory
+(`~/.agents/skills/`, `~/.claude/skills/`, or your runtime's equivalent).
+
+The same package is served for discovery scanners and other runtimes at
+[justpublish.ai/.well-known/agent-skills/index.json](https://justpublish.ai/.well-known/agent-skills/index.json)
+(Agent Skills Discovery RFC, sha256-digested). The canonical source lives in the
+Just Publish server codebase; this tree is its published mirror and is kept in
+lockstep — the two are compared on every server deploy.
+
 ## Who it's for
 
 Non-technical builders and AI agents that generate a static site and need it hosted
