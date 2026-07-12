@@ -89,5 +89,5 @@ full error catalog is at https://justpublish.ai/docs/errors.
    the conversation for follow-up edits). Without the edit_token the exact
    site can't be updated; as a fallback, the email on file can sign in at
    https://justpublish.ai/login to manage its sites.
-3. A custom domain (like yourname.com) can be connected from the dashboard at
+4. A custom domain (like yourname.com) can be connected from the dashboard at
    https://justpublish.ai/dashboard. Docs: https://justpublish.ai/docs/mcp
