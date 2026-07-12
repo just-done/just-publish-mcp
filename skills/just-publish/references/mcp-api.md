@@ -11,12 +11,13 @@ credential in the system is the per-site `edit_token`.
 | Argument | Type | Required | Notes |
 |---|---|---|---|
 | `files` | array of `{ path, content, encoding? }` | yes | Must include `index.html` at the root. Text content as plain strings (`utf-8`, the default); binary content base64-encoded with `"encoding": "base64"`. |
-| `email` | string | yes | Associated with the site. Captured unverified at first deploy; verification is only required later for custom domains and recovery. |
+| `email` | string | yes | Associated with the site. Captured unverified — publishing works immediately, but a NEW site must be verified via the emailed link within about an hour or it is automatically taken down (restorable by signing in with that email). Verification is also what enables custom domains and recovery later. |
 | `site_id` | string | no | Pass to publish over an existing site. Omit to create a new one. |
 | `edit_token` | string | no | Required when `site_id` is passed. |
 
 Returns (in `structuredContent`): `url`, `site_id`, `edit_token`,
-`files_uploaded`, `total_bytes`, `created`.
+`verify_required` (true while the site's email is unverified — relay the
+verification step to the user), `files_uploaded`, `total_bytes`, `created`.
 
 deploy REPLACES the whole site — any file you leave out is DELETED. For
 small edits prefer `update_site_file`.

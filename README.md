@@ -62,14 +62,16 @@ This repo also hosts the **`just-publish` Agent Skill** — a [SKILL.md-format](
 package that teaches an agent the full publish flow (including saving the
 `edit_token` and the email-verification step) before it ever calls a tool.
 
-Install into Codex / ChatGPT with the skill installer, pointing at this tree:
+To install in Codex / ChatGPT, ask the assistant to install the skill from
+this tree:
 
 ```
-$skill-installer install https://github.com/just-done/just-publish-mcp/tree/main/skills/just-publish
+https://github.com/just-done/just-publish-mcp/tree/main/skills/just-publish
 ```
 
-Or copy `skills/just-publish/` into your agent's skills directory
-(`~/.agents/skills/`, `~/.claude/skills/`, or your runtime's equivalent).
+(Codex's skill-installer takes a GitHub tree URL.) For a manual install, copy
+`skills/just-publish/` into `$CODEX_HOME/skills/` (default `~/.codex/skills/`)
+or your runtime's equivalent (e.g. `~/.claude/skills/`).
 
 The same package is served for discovery scanners and other runtimes at
 [justpublish.ai/.well-known/agent-skills/index.json](https://justpublish.ai/.well-known/agent-skills/index.json)
