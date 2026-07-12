@@ -4,17 +4,17 @@
   "title": "Just Publish",
   "description": "Publish the website you built with AI to a live public URL — straight from chat, no setup.",
   "websiteUrl": "https://justpublish.ai",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "icons": [
     {
-      "src": "https://raw.githubusercontent.com/just-done/just-publish-mcp/main/icon-512.png",
+      "src": "https://justpublish.ai/icon.png",
       "mimeType": "image/png",
       "sizes": [
         "512x512"
       ]
     },
     {
-      "src": "https://raw.githubusercontent.com/just-done/just-publish-mcp/main/icon-192.png",
+      "src": "https://justpublish.ai/icon-192.png",
       "mimeType": "image/png",
       "sizes": [
         "192x192"
