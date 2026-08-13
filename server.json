@@ -4,7 +4,7 @@
   "title": "Just Publish",
   "description": "Publish the website you built with AI to a live public URL — straight from chat, no setup.",
   "websiteUrl": "https://justpublish.ai",
-  "version": "0.1.5",
+  "version": "0.1.8",
   "icons": [
     {
       "src": "https://justpublish.ai/icon.png",
