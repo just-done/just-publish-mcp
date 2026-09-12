@@ -2,9 +2,9 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "ai.justpublish/just-publish",
   "title": "Just Publish",
-  "description": "Publish the website you built with AI to a live public URL — straight from chat, no setup.",
+  "description": "Publish the website you built with AI to a live public URL, straight from chat, with no setup.",
   "websiteUrl": "https://justpublish.ai",
-  "version": "0.1.8",
+  "version": "0.1.11",
   "icons": [
     {
       "src": "https://justpublish.ai/icon.png",
