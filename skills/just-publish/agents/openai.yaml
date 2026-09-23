@@ -1,6 +1,6 @@
 interface:
   display_name: "Just Publish"
-  short_description: "Publish the website you built with AI to a live public URL — straight from the chat, no setup."
+  short_description: "Publish the website you built with AI to a live public URL, straight from the chat, with no setup."
   icon_small: "./assets/icon.svg"
   icon_large: "./assets/icon-512.png"
   brand_color: "#D97757"
@@ -10,11 +10,17 @@ policy:
   allow_implicit_invocation: true
 
 # One entry per MCP SERVER (the connector Codex installs and wires), not per
-# tool — the server exposes deploy, update_site_file, and get_site_files.
+# tool: this endpoint exposes deploy, get_site_files and update_site_file.
+#
+# The url is deliberately the endpoint for manually configured clients, which
+# is what an installer wires up. Just Publish also runs a signed-in Claude
+# connector at https://mcp.justpublish.ai/claude, documented in SKILL.md; it is
+# OAuth-gated and added inside Claude, not through this manifest. Keep the two
+# apart: test/skill.test.ts in the server repo fails if this url changes.
 dependencies:
   tools:
     - type: "mcp"
       value: "just-publish"
-      description: "Just Publish MCP server — publish a static site to a live public URL, and read or edit its files."
+      description: "Just Publish MCP server: publish a static site to a live public URL, and read or edit its files."
       transport: "streamable_http"
       url: "https://mcp.justpublish.ai/"

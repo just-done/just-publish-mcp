@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" role="img" aria-label="Just">
   <!--
-    ChatGPT app-icon cut (LIGHT) — derived from the Figma-verified canonical
+    ChatGPT app-icon cut (LIGHT), derived from the Figma-verified canonical
     just-logo-icon.svg (node 3:6). Geometry byte-identical; only a full-bleed
-    square paper background added (ChatGPT forbids rounded corners — clients
+    square paper background added (ChatGPT forbids rounded corners; clients
     apply circular cropping). bg = just-paper token #F5F3EE.
   -->
   <defs>
