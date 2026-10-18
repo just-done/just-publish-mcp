@@ -10,13 +10,13 @@ policy:
   allow_implicit_invocation: true
 
 # One entry per MCP SERVER (the connector Codex installs and wires), not per
-# tool: this endpoint exposes deploy, get_site_files and update_site_file.
+# tool: this endpoint exposes deploy, list_sites, get_site_files and
+# update_site_file, behind a one-time OAuth sign-in the client runs itself.
 #
-# The url is deliberately the endpoint for manually configured clients, which
-# is what an installer wires up. Just Publish also runs a signed-in Claude
-# connector at https://mcp.justpublish.ai/claude, documented in SKILL.md; it is
-# OAuth-gated and added inside Claude, not through this manifest. Keep the two
-# apart: test/skill.test.ts in the server repo fails if this url changes.
+# The url is the general endpoint an installer wires up. Claude uses its own
+# connector address, https://mcp.justpublish.ai/claude, documented in SKILL.md;
+# it is added inside Claude, not through this manifest. test/skill.test.ts in
+# the server repo fails if this url changes.
 dependencies:
   tools:
     - type: "mcp"
