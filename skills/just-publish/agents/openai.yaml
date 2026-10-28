@@ -3,7 +3,7 @@ interface:
   short_description: "Publish the website you built with AI to a live public URL, straight from the chat, with no setup."
   icon_small: "./assets/icon.svg"
   icon_large: "./assets/icon-512.png"
-  brand_color: "#D97757"
+  brand_color: "#01AE99"
   default_prompt: "Publish this website with Just Publish and give me the live link."
 
 policy:
