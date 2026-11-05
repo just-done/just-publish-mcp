@@ -1,6 +1,6 @@
 ---
 name: just-publish
-description: Publish a static website (HTML, CSS, JS, images) to a live public URL with Just Publish, straight from the chat. Use when the user wants to publish, deploy, host, or share a site or files they built, with Claude, ChatGPT, Cursor, or by hand, or says "put it online", "give me a link", "make this a website"; also for changing a site published earlier with Just Publish. Publishing is free and there is no build step. The MCP server is https://mcp.justpublish.ai/ (in Claude, the connector at https://mcp.justpublish.ai/claude); the person signs in once with a free account, every site is filed under it, and four tools are served. Do NOT use for server-side apps (APIs, databases, SSR frameworks like Next.js), for buying or managing domains, or for changing a site that was not published with Just Publish.
+description: Publish a static website (HTML, CSS, JS, images) to a live public URL with Just Publish, straight from the chat. Use when the user wants to publish, deploy, host, or share a site or files they built, with Claude, ChatGPT, Cursor, or by hand, or says "put it online", "give me a link", "make this a website"; also for changing a site published earlier with Just Publish. Publishing is free and there is no build step. The MCP server is https://mcp.justpublish.ai/ (in Claude, the connector at https://mcp.justpublish.ai/claude); the person signs in once with a free account, every site is filed under it, and five tools are served. Do NOT use for server-side apps (APIs, databases, SSR frameworks like Next.js), for buying or managing domains, or for changing a site that was not published with Just Publish.
 ---
 
 # Just Publish: put a static website online
@@ -25,15 +25,19 @@ time, with Google or a code sent to their email address. Authorization is
 OAuth 2.1 and the client discovers what it needs from the server, so the
 advanced client-id and client-secret fields stay empty.
 
-Both addresses serve the same four tools: `deploy`, `list_sites`,
-`get_site_files` and `update_site_file`. Every site is filed under the
-signed-in account, which changes how you work:
+Both addresses serve the same five tools: `deploy`, `list_sites`,
+`get_site_files`, `update_site_file` and `get_site_domain_status`. Every site is
+filed under the signed-in account, which changes how you work:
 
 - `deploy` takes no email address. Do not ask the user for one.
 - `list_sites` returns the sites that account has already published, so you can
   find a site instead of asking for an id the user does not have.
 - `get_site_files` and `update_site_file` need only a `site_id` for that
   account's own sites.
+- `get_site_domain_status` says whether one of the account's sites is on its
+  own domain yet, and returns a link to that site's domain page on
+  justpublish.ai, where the person confirms the domain and anything to pay. It
+  changes nothing, so never say a domain was bought or connected.
 - Report the live `url` and stop. The account is what makes the site theirs to
   find, change and take down later.
 

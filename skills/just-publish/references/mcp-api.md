@@ -1,7 +1,7 @@
 # Just Publish: MCP API reference
 
 Just Publish is one MCP server over Streamable HTTP (JSON-RPC 2.0 over POST),
-reached at two addresses that serve the same four tools:
+reached at two addresses that serve the same five tools:
 
 - `https://mcp.justpublish.ai/` for Cursor, VS Code, a CLI agent, a custom
   connector, or raw JSON-RPC.
@@ -80,6 +80,24 @@ Returns the site's files and its current `version` (use it as
 
 The recommended edit loop: `get_site_files`, modify content, then
 `update_site_file` with `expected_version`.
+
+## `get_site_domain_status`: is the site on its own domain yet
+
+Served at `https://mcp.justpublish.ai/` and `https://mcp.justpublish.ai/claude`.
+Read-only: it changes nothing, so never tell the person a domain was bought or
+connected.
+
+| Argument | Type | Required | Notes |
+|---|---|---|---|
+| `site_id` | string | yes | One of the signed-in account's sites, as `list_sites` returns it. |
+| `domain` | string | no | The domain the person mentioned, for example `rosiesbakery.com`. Anything that is not a domain name is ignored. |
+
+Returns `site_id`, `url`, `domain` (lowercase ASCII, or `null`), `status`
+(`not_connected`, `pending` or `connected`), `action_url` (the site's domain
+page on justpublish.ai, where the person confirms the domain and anything to
+pay) and `message` (one sentence for the person, with the link when there is
+something to do). A site that does not exist and a site of another account get
+the same not-found answer.
 
 ## Raw JSON-RPC (no MCP client available)
 

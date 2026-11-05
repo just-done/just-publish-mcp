@@ -49,6 +49,7 @@ https://justpublish.ai/install.
 | `get_site_files` | Reads the files of a published site. |
 | `update_site_file` | Changes one file of a published site and puts the change live. |
 | `list_sites` | Lists the sites on the signed-in account. |
+| `get_site_domain_status` | Says whether a site is on its own domain yet, with a link to the site's domain page. Changes nothing. |
 
 The account comes from the sign-in, so `deploy` takes no email address and the
 signed-in person's own sites need only a `site_id`.
