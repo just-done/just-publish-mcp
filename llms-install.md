@@ -19,8 +19,8 @@ download, build or run locally, and no API key to paste.
    sign-in window; the user signs in with their Just account (Google or a code
    sent by email). The client registers itself, so leave any client id and
    secret fields empty.
-3. Verify by listing tools. You should see four: `deploy`, `get_site_files`,
-   `update_site_file` and `list_sites`.
+3. Verify by listing tools. You should see five: `deploy`, `get_site_files`,
+   `update_site_file`, `list_sites` and `get_site_domain_status`.
 4. To publish, call `deploy` with the site files (`index.html` at the root is
    required). It returns the live URL and a `site_id`. The site belongs to the
    signed-in account, so do not ask the user for an email address.
