@@ -1,7 +1,7 @@
 # Just Publish: MCP API reference
 
 Just Publish is one MCP server over Streamable HTTP (JSON-RPC 2.0 over POST),
-reached at two addresses that serve the same five tools:
+reached at three addresses that serve the same five tools:
 
 - `https://mcp.justpublish.ai/` for Cursor, VS Code, a CLI agent, a custom
   connector, or raw JSON-RPC.
@@ -11,6 +11,9 @@ reached at two addresses that serve the same five tools:
 ```
 claude mcp add --transport http just-publish https://mcp.justpublish.ai/claude
 ```
+
+- `https://mcp.justpublish.ai/chatgpt` for the ChatGPT app. There `deploy`
+  creates new sites only (see `deploy` below), and no tool takes `edit_token`.
 
 ## Sign-in
 
@@ -30,7 +33,8 @@ with `site_id` alone for that account's own sites.
 
 ## `list_sites`
 
-Served at `https://mcp.justpublish.ai/` and `https://mcp.justpublish.ai/claude`.
+Served at `https://mcp.justpublish.ai/`, `https://mcp.justpublish.ai/claude`
+and `https://mcp.justpublish.ai/chatgpt`.
 No parameters at all; the identity comes from the access token.
 
 Returns, most recently updated first: the live `url`, `site_id`, when each site
@@ -44,11 +48,14 @@ for a code they may not have.
 | Argument | Type | Required | Notes |
 |---|---|---|---|
 | `files` | array of `{ path, content, encoding? }` | yes | Must include `index.html` at the root. Text content as plain strings (`utf-8`, the default); binary content base64-encoded with `"encoding": "base64"`. |
-| `site_id` | string | no | Pass, with `edit_token`, to publish over an existing site. Omit to create a new one. |
-| `edit_token` | string | no | Required when `site_id` is passed. Passing `site_id` on its own is rejected. |
+| `site_id` | string | no | Pass, with `edit_token`, to publish over an existing site. Omit to create a new one. Not accepted on `/chatgpt`. |
+| `edit_token` | string | no | Required when `site_id` is passed. Passing `site_id` on its own is rejected. Not accepted on `/chatgpt`. |
 
-Returns `url`, `site_id`, `files_uploaded`, `total_bytes`, `created`, and an
-`edit_token` on first create. The site belongs to the signed-in account, so do
+Returns `url`, `site_id`, `files_uploaded`, `total_bytes`, `created`, and, on
+`https://mcp.justpublish.ai/` and `/claude`, an `edit_token` on first create.
+On `/chatgpt`, `deploy` creates new sites only: a call that passes `site_id`
+or `edit_token` is rejected with a message that points to `update_site_file`,
+and the result carries no `edit_token`. The site belongs to the signed-in account, so do
 not show that token to the user or ask them to save it. For a later change,
 prefer `update_site_file` with `site_id` alone.
 
@@ -96,8 +103,12 @@ Returns `site_id`, `url`, `domain` (lowercase ASCII, or `null`), `status`
 (`not_connected`, `pending` or `connected`), `action_url` (the site's domain
 page on justpublish.ai, where the person confirms the domain and anything to
 pay) and `message` (one sentence for the person, with the link when there is
-something to do). A site that does not exist and a site of another account get
-the same not-found answer.
+something to do). An archived site reports `not_connected`, whatever its
+domain's state, because its domain shows the archived notice and not the site.
+A site that does not exist and a site of another account get the same
+not-found answer: a tool result with `isError: true` and a short fixed text
+(the site is not in this account; list your sites to pick one), with nothing
+from the input echoed.
 
 ## Raw JSON-RPC (no MCP client available)
 
