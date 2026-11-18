@@ -23,9 +23,11 @@ Cursor, VS Code, a CLI agent or any other MCP client adds
 `https://mcp.justpublish.ai/` instead. Either way the person signs in the first
 time, with Google or a code sent to their email address. Authorization is
 OAuth 2.1 and the client discovers what it needs from the server, so the
-advanced client-id and client-secret fields stay empty.
+advanced client-id and client-secret fields stay empty. In ChatGPT the app
+connects to `https://mcp.justpublish.ai/chatgpt`, where `deploy` creates new
+sites only (see "Change a site later").
 
-Both addresses serve the same five tools: `deploy`, `list_sites`,
+Every signed-in address serves the same five tools: `deploy`, `list_sites`,
 `get_site_files`, `update_site_file` and `get_site_domain_status`. Every site is
 filed under the signed-in account, which changes how you work:
 
@@ -70,9 +72,10 @@ change a site that was not published with Just Publish.
    files as plain strings; binary files base64-encoded with
    `"encoding": "base64"`.
 4. The result carries the live `url` and the `site_id`. Give the user the URL
-   in plain language; the link is what they asked for. The result also carries
-   an `edit_token`; you do not need it for the account's own sites, so do not
-   ask the user to save it.
+   in plain language; the link is what they asked for. On
+   `https://mcp.justpublish.ai/` and `/claude` the result also carries an
+   `edit_token`; you do not need it for the account's own sites, so do not ask
+   the user to save it. On `/chatgpt` the result has no `edit_token`.
 
 If no MCP client is available, the server accepts raw JSON-RPC 2.0 over POST
 with a bearer token from the sign-in. Read `references/mcp-api.md` for the
@@ -80,17 +83,21 @@ exact request and how to parse the response.
 
 ## Change a site later
 
-1. Find the site with `list_sites` (on `https://mcp.justpublish.ai/` or
-   `https://mcp.justpublish.ai/claude`, whichever you are connected to).
+1. Find the site with `list_sites` (on whichever address you are connected
+   to).
 2. Read before you write. `get_site_files` returns what is currently live plus
    a `version`.
 3. To change one or a few files, call `update_site_file`. It merges: every file
    you do not name survives. Pass the `version` you just read as
    `expected_version`, so a change someone else made in the meantime is
    rejected instead of silently overwritten.
-4. To replace a whole site, call `deploy` with `site_id` and the `edit_token`
-   it returned. deploy REPLACES the entire site: any file you leave out is
-   DELETED. Prefer `update_site_file`, which needs only the `site_id`.
+4. To replace a whole site on `https://mcp.justpublish.ai/` or `/claude`,
+   call `deploy` with `site_id` and the `edit_token` it returned. deploy
+   REPLACES the entire site: any file you leave out is DELETED. Prefer
+   `update_site_file`, which needs only the `site_id`. On `/chatgpt`, `deploy`
+   rejects `site_id` and `edit_token`: change a site there with
+   `update_site_file`; replacing a whole site, or removing a file, is done on
+   the Just Publish website.
 
 For the full parameter schema of every tool, read `references/mcp-api.md`.
 
